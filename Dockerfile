@@ -82,6 +82,9 @@ COPY apache2-foreground /usr/local/bin/
 RUN chmod +x /usr/local/bin/apache2-foreground /usr/local/bin/docker-php-ext-*
 WORKDIR /var/www/html
 
+# Enable apache2 rewrite engine
+RUN a2enmod rewrite
+
 RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
 
 # Change www-data user to match the host system UID and GID and chown www directory
